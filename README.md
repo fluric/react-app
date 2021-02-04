@@ -1,6 +1,6 @@
 # Setup
 
-###npm install -g yarn
+### npm install -g yarn
 
 To run app locally:
 ### yarn start
