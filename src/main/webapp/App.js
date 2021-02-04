@@ -1,8 +1,12 @@
+import React from "react";
+
+import {Container, StyledButton} from "./App.style";
+
 function App() {
     return (
-        <div className="App">
-            Hello World!
-        </div>
+        <Container className="App">
+            <StyledButton>Hello World!</StyledButton>
+        </Container>
     );
 }
 
