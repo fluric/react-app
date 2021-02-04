@@ -1,5 +1,12 @@
 # intellij
 .idea/*
+!.idea/codeStyles
+!.idea/modules.xml
+!.idea/prettier.xml
+!.idea/checkstyle-idea.xml
+!.idea/compiler.xml
+!.idea/misc.xml
+!.idea/inspectionProfiles
 
 # dependencies
 /node_modules
