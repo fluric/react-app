@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 
 import store from './main/webapp/store';
 import App from './main/webapp/App';
+import messages from './main/webapp/translations/en.json';
 
 ReactDOM.render(
   <Provider store={store}>
-    <IntlProvider locale={'en'}>
+    <IntlProvider locale={'en'} messages={messages}>
       <App />
     </IntlProvider>
   </Provider>,
