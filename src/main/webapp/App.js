@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, StyledButton } from './App.style';
+import { Container, StyledButton } from 'main/webapp/App.style';
 
 import 'semantic-ui-css/semantic.min.css';
 import { FormattedMessage } from 'react-intl';

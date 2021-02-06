@@ -4,7 +4,7 @@ import produce from 'immer';
 import thunkMiddleware from 'redux-thunk';
 import reduceReducers from 'reduce-reducers';
 
-import { initialState } from './initialState';
+import { initialState } from 'main/webapp/store/initialState';
 
 const withProduce = reducers => reducers.map(reducer => produce((draft, action) => reducer(draft, action)));
 
