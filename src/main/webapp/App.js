@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 function App() {
   return (
-    <Container className="App">
+    <Container className='App'>
       <StyledButton>Hello World!</StyledButton>
     </Container>
   );
