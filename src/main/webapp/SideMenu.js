@@ -15,7 +15,7 @@ function SideMenu() {
       visible={isVisible}
       width='thin'
     >
-      <Menu.Item as='a'>
+      <Menu.Item>
         <Icon name='home' />
         Home
       </Menu.Item>
