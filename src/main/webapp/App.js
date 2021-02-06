@@ -1,16 +1,13 @@
 import React from 'react';
-
-import { Container, StyledButton } from 'main/webapp/App.style';
+import { Container } from 'semantic-ui-react';
 
 import 'semantic-ui-css/semantic.min.css';
-import { FormattedMessage } from 'react-intl';
+import SideMenu from 'main/webapp/SideMenu';
 
 function App() {
   return (
-    <Container className='App'>
-      <StyledButton>
-        <FormattedMessage id={'app.homepage.button'} />
-      </StyledButton>
+    <Container>
+      <SideMenu />
     </Container>
   );
 }
