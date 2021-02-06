@@ -8,7 +8,8 @@ To run app locally:
 
 ### Dependencies
 [semantic-ui](https://react.semantic-ui.com/)  
-[styled-components](https://styled-components.com/)
+[styled-components](https://styled-components.com/)  
+[redux-devtools-extension](https://www.npmjs.com/package/redux-devtools-extension)
 
 ### Deployment
 

@@ -4,9 +4,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immer": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-intl": "^5.12.1",
+    "react-intl-redux": "^2.2.0",
+    "react-redux": "^7.2.2",
     "react-scripts": "4.0.2",
+    "reduce-reducers": "^1.0.4",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.2.1"
@@ -41,6 +48,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.1.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "redux-devtools-extension": "^2.13.8"
   }
 }
