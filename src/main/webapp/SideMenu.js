@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon, Menu, Sidebar } from 'semantic-ui-react';
+import { FormattedMessage } from 'react-intl';
 
 function SideMenu() {
-  const [isVisible, setIsVisible] = useState(true);
-
   return (
-    <Sidebar
-      as={Menu}
-      animation='overlay'
-      icon='labeled'
-      inverted
-      onHide={() => setIsVisible(false)}
-      vertical
-      visible={isVisible}
-      width='thin'
-    >
+    <Sidebar as={Menu} animation='overlay' direction='top' inverted visible width='thin'>
       <Menu.Item>
-        <Icon name='home' />
-        Home
+        <Icon name='gamepad' />
+        <FormattedMessage id={'app.menu.label.rockPaperScissors'} />
       </Menu.Item>
     </Sidebar>
   );
