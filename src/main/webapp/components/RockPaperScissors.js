@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
-import { OpponentButton } from 'main/webapp/components/RockPaperScissors.style';
+import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
+import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
 import { isNull } from 'lodash';
 
 const Moves = {
@@ -23,15 +23,35 @@ export const RockPaperScissors = () => {
 
   return (
     <Container>
-      <Grid>
-        <GridColumn>
-          <Button id={Moves.ROCK} icon='hand rock' onClick={onClick} primary={selected === Moves.ROCK} />
-          <Button id={Moves.PAPER} icon='hand paper' onClick={onClick} primary={selected === Moves.PAPER} />
-          <Button id={Moves.SCISSORS} icon='hand scissors' onClick={onClick} primary={selected === Moves.SCISSORS} />
+      <Grid columns={2} centered>
+        <GridColumn mobile={3}>
+          <ButtonContainer>
+            <StyledButton
+              size={'large'}
+              id={Moves.ROCK}
+              icon='hand rock'
+              onClick={onClick}
+              primary={selected === Moves.ROCK}
+            />
+            <StyledButton
+              size={'large'}
+              id={Moves.PAPER}
+              icon='hand paper'
+              onClick={onClick}
+              primary={selected === Moves.PAPER}
+            />
+            <StyledButton
+              size={'large'}
+              id={Moves.SCISSORS}
+              icon='hand scissors'
+              onClick={onClick}
+              primary={selected === Moves.SCISSORS}
+            />
+          </ButtonContainer>
         </GridColumn>
-        <GridColumn>
+        <GridColumn mobile={3} verticalAlign={'middle'}>
           <Transition visible={!isNull(selected)}>
-            <OpponentButton icon={`hand ${opponentMove}`} />
+            <StyledButton icon={`hand ${opponentMove}`} size={'large'} />
           </Transition>
         </GridColumn>
       </Grid>
