@@ -15,7 +15,7 @@ export const RockPaperScissors = () => {
   const [selected, setSelected] = useState(null);
   const [opponentMove, setOpponentMove] = useState('');
 
-  const onClick = ({ target: { id } }) => {
+  const onClick = ({ currentTarget: { id } }) => {
     setSelected(id);
     const index = Math.floor(Math.random() * 3);
     setOpponentMove(MovesList[index]);
