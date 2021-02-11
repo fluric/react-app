@@ -12,9 +12,14 @@ import {
   getOutcome,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
 
+export const ButtonWrapper = props => {
+  const { id, color, onClick } = props;
+  return <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />;
+};
+
 export const RockPaperScissors = () => {
   const [, setAction] = useState(null);
-  const [colors, setColors] = useState({ [Actions.PAPER]: null, [Actions.ROCK]: null, [Actions.SCISSORS]: null });
+  const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
 
@@ -37,27 +42,9 @@ export const RockPaperScissors = () => {
       <Grid columns={2} centered>
         <GridColumn mobile={3}>
           <ButtonContainer>
-            <StyledButton
-              size={'large'}
-              id={Actions.ROCK}
-              icon='hand rock'
-              onClick={onClick}
-              color={colors[Actions.ROCK]}
-            />
-            <StyledButton
-              size={'large'}
-              id={Actions.PAPER}
-              icon='hand paper'
-              onClick={onClick}
-              color={colors[Actions.PAPER]}
-            />
-            <StyledButton
-              size={'large'}
-              id={Actions.SCISSORS}
-              icon='hand scissors'
-              onClick={onClick}
-              color={colors[Actions.SCISSORS]}
-            />
+            <ButtonWrapper id={Actions.ROCK} color={colors[Actions.ROCK]} onClick={onClick} />
+            <ButtonWrapper id={Actions.PAPER} color={colors[Actions.PAPER]} onClick={onClick} />
+            <ButtonWrapper id={Actions.SCISSORS} color={colors[Actions.SCISSORS]} onClick={onClick} />
           </ButtonContainer>
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
