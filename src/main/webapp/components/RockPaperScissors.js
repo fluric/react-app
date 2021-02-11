@@ -1,25 +1,36 @@
 import React, { useState } from 'react';
 import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
-import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
 import { isNull } from 'lodash';
 
-const Moves = {
-  ROCK: 'rock',
-  PAPER: 'paper',
-  SCISSORS: 'scissors',
-};
-
-const MovesList = [Moves.ROCK, Moves.PAPER, Moves.SCISSORS];
+import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
+import {
+  Actions,
+  Colors,
+  defaultColors,
+  getOpponentAction,
+  getOppositeOutcome,
+  getOutcome,
+} from 'main/webapp/utilities/RockPaperScissorsUtility';
 
 export const RockPaperScissors = () => {
-  const [selected, setSelected] = useState(null);
-  const [opponentMove, setOpponentMove] = useState('');
+  const [, setAction] = useState(null);
+  const [colors, setColors] = useState({ [Actions.PAPER]: null, [Actions.ROCK]: null, [Actions.SCISSORS]: null });
+  const [opponentAction, setOpponentAction] = useState(null);
+  const [opponentColor, setOpponentColor] = useState(null);
 
-  const onClick = ({ currentTarget: { id } }) => {
-    setSelected(id);
-    const index = Math.floor(Math.random() * 3);
-    setOpponentMove(MovesList[index]);
+  const executeRound = nextAction => {
+    const nextOpponentAction = getOpponentAction();
+    const outcome = getOutcome(nextAction, nextOpponentAction);
+    const oppositeOutcome = getOppositeOutcome(outcome);
+
+    setAction(nextAction);
+    const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
+    setColors(nextColors);
+    setOpponentColor(Colors[oppositeOutcome]);
+    setOpponentAction(nextOpponentAction);
   };
+
+  const onClick = ({ currentTarget: { id: action } }) => executeRound(action);
 
   return (
     <Container>
@@ -28,30 +39,30 @@ export const RockPaperScissors = () => {
           <ButtonContainer>
             <StyledButton
               size={'large'}
-              id={Moves.ROCK}
+              id={Actions.ROCK}
               icon='hand rock'
               onClick={onClick}
-              primary={selected === Moves.ROCK}
+              color={colors[Actions.ROCK]}
             />
             <StyledButton
               size={'large'}
-              id={Moves.PAPER}
+              id={Actions.PAPER}
               icon='hand paper'
               onClick={onClick}
-              primary={selected === Moves.PAPER}
+              color={colors[Actions.PAPER]}
             />
             <StyledButton
               size={'large'}
-              id={Moves.SCISSORS}
+              id={Actions.SCISSORS}
               icon='hand scissors'
               onClick={onClick}
-              primary={selected === Moves.SCISSORS}
+              color={colors[Actions.SCISSORS]}
             />
           </ButtonContainer>
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
-          <Transition visible={!isNull(selected)}>
-            <StyledButton icon={`hand ${opponentMove}`} size={'large'} />
+          <Transition visible={!isNull(opponentAction)}>
+            <StyledButton icon={`hand ${opponentAction}`} size={'large'} color={opponentColor} />
           </Transition>
         </GridColumn>
       </Grid>
