@@ -1,3 +1,5 @@
+import { random } from 'lodash';
+
 export const Actions = {
   ROCK: 'rock',
   PAPER: 'paper',
@@ -11,6 +13,7 @@ export const Outcomes = {
   DRAW: 'draw',
   DEFEAT: 'defeat',
 };
+
 export const Colors = {
   DEFAULT: null,
   [Outcomes.WIN]: 'green',
@@ -18,15 +21,17 @@ export const Colors = {
   [Outcomes.DEFEAT]: 'red',
 };
 
+export const OpponentColors = {
+  DEFAULT: null,
+  [Outcomes.DEFEAT]: 'green',
+  [Outcomes.DRAW]: 'blue',
+  [Outcomes.WIN]: 'red',
+};
+
 export const defaultColors = {
   [Actions.PAPER]: Colors.DEFAULT,
   [Actions.ROCK]: Colors.DEFAULT,
   [Actions.SCISSORS]: Colors.DEFAULT,
-};
-
-export const getOpponentAction = () => {
-  const index = Math.floor(Math.random() * 3);
-  return ActionList[index];
 };
 
 export const getOutcome = (action, opponentAction) => {
@@ -44,9 +49,7 @@ export const getOutcome = (action, opponentAction) => {
   }
 };
 
-export const getOppositeOutcome = outcome => {
-  if (outcome === Outcomes.DRAW) {
-    return Outcomes.DRAW;
-  }
-  return outcome === Outcomes.WIN ? Outcomes.DEFEAT : Outcomes.WIN;
+export const getOpponentAction = () => {
+  const index = random(2);
+  return ActionList[index];
 };

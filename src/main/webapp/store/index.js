@@ -1,8 +1,8 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { applyMiddleware, createStore } from 'redux';
-import produce from 'immer';
 import thunkMiddleware from 'redux-thunk';
 import reduceReducers from 'reduce-reducers';
+import produce from 'immer';
 
 import { initialState } from 'main/webapp/store/initialState';
 

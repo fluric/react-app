@@ -8,8 +8,8 @@ import {
   Colors,
   defaultColors,
   getOpponentAction,
-  getOppositeOutcome,
   getOutcome,
+  OpponentColors,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
 
 export const ButtonWrapper = props => {
@@ -22,17 +22,18 @@ export const RockPaperScissors = () => {
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
+  const [actionHistory, setActionHistory] = useState([]);
 
   const executeRound = nextAction => {
     const nextOpponentAction = getOpponentAction();
     const outcome = getOutcome(nextAction, nextOpponentAction);
-    const oppositeOutcome = getOppositeOutcome(outcome);
+    const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
 
     setAction(nextAction);
-    const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
     setColors(nextColors);
-    setOpponentColor(Colors[oppositeOutcome]);
+    setOpponentColor(OpponentColors[outcome]);
     setOpponentAction(nextOpponentAction);
+    setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
   };
 
   const onClick = ({ currentTarget: { id: action } }) => executeRound(action);
@@ -49,7 +50,7 @@ export const RockPaperScissors = () => {
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
           <Transition visible={!isNull(opponentAction)}>
-            <StyledButton icon={`hand ${opponentAction}`} size={'large'} color={opponentColor} />
+            <ButtonWrapper id={opponentAction} color={opponentColor} />
           </Transition>
         </GridColumn>
       </Grid>
