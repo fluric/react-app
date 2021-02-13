@@ -6,7 +6,7 @@ import { OPPONENT_DELAY, Outcomes } from 'main/webapp/utilities/RockPaperScissor
 import { Strategies } from 'main/webapp/components/RockPaperScissorsStrategies';
 import { FailureModal, LevelsCompleteModal, SuccessModal } from 'main/webapp/components/RockPaperScissorsModals';
 
-const SCORE_LIMIT = 2;
+const SCORE_LIMIT = 5;
 
 const ScoreBoard = ({ score, opponentScore }) => (
   <Segment compact>
