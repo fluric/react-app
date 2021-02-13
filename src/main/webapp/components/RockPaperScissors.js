@@ -32,11 +32,14 @@ export const RockPaperScissors = ({ onOutcome }) => {
     const outcome = getOutcome(nextAction, nextOpponentAction);
     const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
 
+    // prepare transition
     setShowOpponent(false);
     setColors(defaultColors);
-    setAction(nextAction);
-    setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
+
+    // execute changes after transition
     setTimeout(() => {
+      setAction(nextAction);
+      setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
       setColors(nextColors);
       setOpponentColor(OpponentColors[outcome]);
       setOpponentAction(nextOpponentAction);
