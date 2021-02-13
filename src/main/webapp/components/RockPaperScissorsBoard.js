@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Button, Container, Grid, GridRow, Header, Icon, Segment } from 'semantic-ui-react';
-
-import { ModalWrapper } from 'main/webapp/components/wrappers/ModalWrapper';
+import { Grid, GridRow, Header, Segment } from 'semantic-ui-react';
 import { RockPaperScissors } from 'main/webapp/components/RockPaperScissors';
 import { OPPONENT_DELAY, Outcomes } from 'main/webapp/utilities/RockPaperScissorsUtility';
+import { Strategies } from 'main/webapp/components/RockPaperScissorsStrategies';
+import { FailureModal, LevelsCompleteModal, SuccessModal } from 'main/webapp/components/RockPaperScissorsModals';
 
 const SCORE_LIMIT = 2;
 
@@ -20,58 +20,25 @@ const LevelDisplay = ({ level }) => (
   </Header>
 );
 
-const SuccessModal = ({ open, onConfirm, onDeny }) => {
-  return (
-    <ModalWrapper
-      open={open}
-      header={<FormattedMessage id={'app.rockPaperScissors.levelSuccess.header'} />}
-      content={<FormattedMessage id={'app.rockPaperScissors.levelSuccess.content'} />}
-      actions={
-        <Container>
-          <Button basic color='red' inverted onClick={onDeny}>
-            <Icon name='remove' />
-            <FormattedMessage id={'app.rockPaperScissors.levelSuccess.deny'} />
-          </Button>
-          <Button color='green' inverted onClick={onConfirm}>
-            <Icon name='checkmark' />
-            <FormattedMessage id={'app.rockPaperScissors.levelSuccess.confirm'} />
-          </Button>
-        </Container>
-      }
-    />
-  );
-};
-
-const FailureModal = ({ open, onConfirm }) => {
-  return (
-    <ModalWrapper
-      open={open}
-      header={<FormattedMessage id={'app.rockPaperScissors.levelFailure.header'} />}
-      content={<FormattedMessage id={'app.rockPaperScissors.levelFailure.content'} />}
-      actions={
-        <Container>
-          <Button inverted onClick={onConfirm}>
-            <Icon name='checkmark' />
-            <FormattedMessage id={'app.rockPaperScissors.levelFailure.confirm'} />
-          </Button>
-        </Container>
-      }
-    />
-  );
-};
-
 export const RockPaperScissorsBoard = () => {
   const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showFailureModal, setShowFailureModal] = useState(false);
+  const [showLevelsCompleteModal, setShowLevelsCompleteModal] = useState(false);
 
   useEffect(() => {
-    if (score === SCORE_LIMIT) {
+    if (score === SCORE_LIMIT && level < Object.keys(Strategies).length) {
       setTimeout(() => setShowSuccessModal(true), OPPONENT_DELAY);
     }
-  }, [score]);
+  }, [score, level]);
+
+  useEffect(() => {
+    if (score === SCORE_LIMIT && level === Object.keys(Strategies).length) {
+      setTimeout(() => setShowLevelsCompleteModal(true), OPPONENT_DELAY);
+    }
+  }, [score, level]);
 
   useEffect(() => {
     if (opponentScore === SCORE_LIMIT) {
@@ -101,6 +68,12 @@ export const RockPaperScissorsBoard = () => {
     resetScore();
   };
 
+  const onConfirmLevelsComplete = () => {
+    setShowLevelsCompleteModal(false);
+    setLevel(1);
+    resetScore();
+  };
+
   const resetScore = () => {
     setScore(0);
     setOpponentScore(0);
@@ -119,6 +92,7 @@ export const RockPaperScissorsBoard = () => {
       </GridRow>
       <SuccessModal open={showSuccessModal} onConfirm={onConfirmSuccess} onDeny={onDenySuccess} />
       <FailureModal open={showFailureModal} onConfirm={onConfirmFailure} />
+      <LevelsCompleteModal open={showLevelsCompleteModal} onConfirm={onConfirmLevelsComplete} />
     </Grid>
   );
 };

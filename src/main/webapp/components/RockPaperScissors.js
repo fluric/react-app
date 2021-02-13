@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
 import { isNull } from 'lodash';
 
@@ -7,34 +7,37 @@ import {
   Actions,
   Colors,
   defaultColors,
-  getOpponentAction,
   getOutcome,
   OPPONENT_DELAY,
   OpponentColors,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
+import { Strategies } from 'main/webapp/components/RockPaperScissorsStrategies';
 
 const ButtonWrapper = ({ id, color, onClick }) => (
   <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />
 );
 
 export const RockPaperScissors = ({ onOutcome, level }) => {
-  const [, setAction] = useState(null);
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
   const [showOpponent, setShowOpponent] = useState(true);
   const [actionHistory, setActionHistory] = useState([]);
 
-  // useEffect(() => {
-  //   setColors(defaultColors);
-  //   setActionHistory([]);
-  //   setOpponentAction(null);
-  //   setOpponentColor(null);
-  //   setShowOpponent(true);
-  // }, level);
+  const getOpponentAction = Strategies[level];
+
+  useEffect(() => resetComponent(), [level]);
+
+  const resetComponent = () => {
+    setActionHistory([]);
+    setColors(defaultColors);
+    setOpponentAction(null);
+    setOpponentColor(null);
+    setShowOpponent(true);
+  };
 
   const executeRound = nextAction => {
-    const nextOpponentAction = getOpponentAction(level);
+    const nextOpponentAction = getOpponentAction(actionHistory);
     const outcome = getOutcome(nextAction, nextOpponentAction);
     const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
 
@@ -44,7 +47,6 @@ export const RockPaperScissors = ({ onOutcome, level }) => {
 
     // execute changes after transition
     setTimeout(() => {
-      setAction(nextAction);
       setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
       setColors(nextColors);
       setOpponentColor(OpponentColors[outcome]);
@@ -69,7 +71,12 @@ export const RockPaperScissors = ({ onOutcome, level }) => {
         <GridColumn mobile={3} verticalAlign={'middle'}>
           <Transition visible={showOpponent && !isNull(opponentAction)} transitionOnMount>
             <ButtonContainer>
-              <StyledButton size={'large'} id={'opponent'} icon={`hand ${opponentAction}`} color={opponentColor} />
+              <StyledButton
+                size={'large'}
+                id={'opponent'}
+                icon={opponentAction && `hand ${opponentAction}`}
+                color={opponentColor}
+              />
             </ButtonContainer>
           </Transition>
         </GridColumn>

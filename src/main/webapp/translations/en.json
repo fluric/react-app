@@ -8,5 +8,8 @@
   "app.rockPaperScissors.levelSuccess.deny": "Stay",
   "app.rockPaperScissors.levelFailure.header": "You have lost...",
   "app.rockPaperScissors.levelFailure.content": "You have to start again.",
-  "app.rockPaperScissors.levelFailure.confirm": "Ok"
+  "app.rockPaperScissors.levelFailure.confirm": "Ok",
+  "app.rockPaperScissors.levelsComplete.header": "Congratulations!",
+  "app.rockPaperScissors.levelsComplete.content": "You have completed all levels and are a real master of rock, paper, scissors.",
+  "app.rockPaperScissors.levelsComplete.confirm": "Yeeey :)"
 }
