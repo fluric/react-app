@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
+import { isNull } from 'lodash';
 
 import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
 import {
@@ -23,7 +24,7 @@ export const RockPaperScissors = ({ onOutcome }) => {
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
-  const [showOpponent, setShowOpponent] = useState(false);
+  const [showOpponent, setShowOpponent] = useState(true);
   const [actionHistory, setActionHistory] = useState([]);
 
   const executeRound = nextAction => {
@@ -44,7 +45,7 @@ export const RockPaperScissors = ({ onOutcome }) => {
     }, OPPONENT_DELAY);
   };
 
-  const onClick = ({ currentTarget: { id: action } }) => executeRound(action);
+  const onClick = ({ currentTarget: { id: action } }) => showOpponent && executeRound(action);
 
   return (
     <Container>
@@ -57,7 +58,7 @@ export const RockPaperScissors = ({ onOutcome }) => {
           </ButtonContainer>
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
-          <Transition visible={showOpponent} transitionOnMount>
+          <Transition visible={showOpponent && !isNull(opponentAction)} transitionOnMount>
             <StyledButton size={'large'} id={'opponent'} icon={`hand ${opponentAction}`} color={opponentColor} />
           </Transition>
         </GridColumn>
