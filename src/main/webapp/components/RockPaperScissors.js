@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
-import { isNull } from 'lodash';
 
 import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
 import {
@@ -24,6 +23,7 @@ export const RockPaperScissors = ({ onOutcome }) => {
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
+  const [showOpponent, setShowOpponent] = useState(false);
   const [actionHistory, setActionHistory] = useState([]);
 
   const executeRound = nextAction => {
@@ -31,12 +31,17 @@ export const RockPaperScissors = ({ onOutcome }) => {
     const outcome = getOutcome(nextAction, nextOpponentAction);
     const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
 
+    setShowOpponent(false);
+    setColors(defaultColors);
     setAction(nextAction);
-    setColors(nextColors);
-    setOpponentColor(OpponentColors[outcome]);
-    setOpponentAction(nextOpponentAction);
     setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
-    setTimeout(() => onOutcome(outcome), OPPONENT_DELAY);
+    setTimeout(() => {
+      setColors(nextColors);
+      setOpponentColor(OpponentColors[outcome]);
+      setOpponentAction(nextOpponentAction);
+      onOutcome(outcome);
+      setShowOpponent(true);
+    }, OPPONENT_DELAY);
   };
 
   const onClick = ({ currentTarget: { id: action } }) => executeRound(action);
@@ -52,8 +57,8 @@ export const RockPaperScissors = ({ onOutcome }) => {
           </ButtonContainer>
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
-          <Transition visible={!isNull(opponentAction)}>
-            <ButtonWrapper id={opponentAction} color={opponentColor} />
+          <Transition visible={showOpponent} transitionOnMount>
+            <StyledButton size={'large'} id={'opponent'} icon={`hand ${opponentAction}`} color={opponentColor} />
           </Transition>
         </GridColumn>
       </Grid>
