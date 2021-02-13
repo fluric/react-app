@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, GridRow, Segment } from 'semantic-ui-react';
 import { RockPaperScissors } from 'main/webapp/components/RockPaperScissors';
 import { Outcomes } from 'main/webapp/utilities/RockPaperScissorsUtility';
 
@@ -15,9 +15,13 @@ export const RockPaperScissorsBoard = () => {
   };
 
   return (
-    <Grid centered>
-      <ScoreBoard score={score} opponentScore={opponentScore} />
-      <RockPaperScissors onOutcome={onOutcome} />
+    <Grid centered columns={1}>
+      <GridRow>
+        <ScoreBoard score={score} opponentScore={opponentScore} />
+      </GridRow>
+      <GridRow>
+        <RockPaperScissors onOutcome={onOutcome} />
+      </GridRow>
     </Grid>
   );
 };

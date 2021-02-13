@@ -14,10 +14,9 @@ import {
 
 const OPPONENT_DELAY = 500; // ms
 
-const ButtonWrapper = props => {
-  const { id, color, onClick } = props;
-  return <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />;
-};
+const ButtonWrapper = ({ id, color, onClick }) => (
+  <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />
+);
 
 export const RockPaperScissors = ({ onOutcome }) => {
   const [, setAction] = useState(null);
@@ -62,7 +61,9 @@ export const RockPaperScissors = ({ onOutcome }) => {
         </GridColumn>
         <GridColumn mobile={3} verticalAlign={'middle'}>
           <Transition visible={showOpponent && !isNull(opponentAction)} transitionOnMount>
-            <StyledButton size={'large'} id={'opponent'} icon={`hand ${opponentAction}`} color={opponentColor} />
+            <ButtonContainer>
+              <StyledButton size={'large'} id={'opponent'} icon={`hand ${opponentAction}`} color={opponentColor} />
+            </ButtonContainer>
           </Transition>
         </GridColumn>
       </Grid>
