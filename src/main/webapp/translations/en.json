@@ -1,3 +1,5 @@
 {
-  "app.menu.label.rockPaperScissors": "Rock, Paper, Scissors"
+  "app.menu.label.rockPaperScissors": "Rock, Paper, Scissors",
+  "app.scoreBoard.level": "Level {level}",
+  "app.scoreBoard.result": "{score} : {opponentScore}"
 }
