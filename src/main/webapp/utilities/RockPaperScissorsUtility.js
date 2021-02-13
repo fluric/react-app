@@ -1,5 +1,7 @@
 import { random } from 'lodash';
 
+export const OPPONENT_DELAY = 500; // ms
+
 export const Actions = {
   ROCK: 'rock',
   PAPER: 'paper',

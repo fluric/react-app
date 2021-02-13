@@ -1,5 +1,12 @@
 {
   "app.menu.label.rockPaperScissors": "Rock, Paper, Scissors",
-  "app.scoreBoard.level": "Level {level}",
-  "app.scoreBoard.result": "{score} : {opponentScore}"
+  "app.rockPaperScissors.scoreBoard.level": "Level {level}",
+  "app.rockPaperScissors.scoreBoard.result": "{score} : {opponentScore}",
+  "app.rockPaperScissors.levelSuccess.header": "Well done!",
+  "app.rockPaperScissors.levelSuccess.content": "Do you want to proceed to the next level?",
+  "app.rockPaperScissors.levelSuccess.confirm": "Proceed",
+  "app.rockPaperScissors.levelSuccess.deny": "Stay",
+  "app.rockPaperScissors.levelFailure.header": "You have lost...",
+  "app.rockPaperScissors.levelFailure.content": "You have to start again.",
+  "app.rockPaperScissors.levelFailure.confirm": "Ok"
 }

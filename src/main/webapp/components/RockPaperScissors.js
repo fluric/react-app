@@ -9,16 +9,15 @@ import {
   defaultColors,
   getOpponentAction,
   getOutcome,
+  OPPONENT_DELAY,
   OpponentColors,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
-
-const OPPONENT_DELAY = 500; // ms
 
 const ButtonWrapper = ({ id, color, onClick }) => (
   <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />
 );
 
-export const RockPaperScissors = ({ onOutcome }) => {
+export const RockPaperScissors = ({ onOutcome, level }) => {
   const [, setAction] = useState(null);
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
@@ -26,8 +25,16 @@ export const RockPaperScissors = ({ onOutcome }) => {
   const [showOpponent, setShowOpponent] = useState(true);
   const [actionHistory, setActionHistory] = useState([]);
 
+  // useEffect(() => {
+  //   setColors(defaultColors);
+  //   setActionHistory([]);
+  //   setOpponentAction(null);
+  //   setOpponentColor(null);
+  //   setShowOpponent(true);
+  // }, level);
+
   const executeRound = nextAction => {
-    const nextOpponentAction = getOpponentAction();
+    const nextOpponentAction = getOpponentAction(level);
     const outcome = getOutcome(nextAction, nextOpponentAction);
     const nextColors = { ...defaultColors, [nextAction]: Colors[outcome] };
 
