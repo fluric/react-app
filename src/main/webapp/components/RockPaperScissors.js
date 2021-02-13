@@ -12,12 +12,14 @@ import {
   OpponentColors,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
 
-export const ButtonWrapper = props => {
+const OPPONENT_DELAY = 500; // ms
+
+const ButtonWrapper = props => {
   const { id, color, onClick } = props;
   return <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />;
 };
 
-export const RockPaperScissors = () => {
+export const RockPaperScissors = ({ onOutcome }) => {
   const [, setAction] = useState(null);
   const [colors, setColors] = useState(defaultColors);
   const [opponentAction, setOpponentAction] = useState(null);
@@ -34,6 +36,7 @@ export const RockPaperScissors = () => {
     setOpponentColor(OpponentColors[outcome]);
     setOpponentAction(nextOpponentAction);
     setActionHistory([...actionHistory, { action: nextAction, opponentAction: nextOpponentAction }]);
+    setTimeout(() => onOutcome(outcome), OPPONENT_DELAY);
   };
 
   const onClick = ({ currentTarget: { id: action } }) => executeRound(action);
