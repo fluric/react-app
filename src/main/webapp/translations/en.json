@@ -1,5 +1,6 @@
 {
   "app.menu.label.rockPaperScissors": "Rock, Paper, Scissors",
+  "app.menu.label.jokes": "Jokes",
   "app.rockPaperScissors.scoreBoard.level": "Level {level}",
   "app.rockPaperScissors.scoreBoard.result": "{score} : {opponentScore}",
   "app.rockPaperScissors.levelSuccess.header": "Well done!",
