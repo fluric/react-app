@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Grid, GridRow, Header, Segment } from 'semantic-ui-react';
-import { RockPaperScissors } from 'main/webapp/components/RockPaperScissors';
+import { RockPaperScissors } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors';
 import { OPPONENT_DELAY, Outcomes } from 'main/webapp/utilities/RockPaperScissorsUtility';
-import { Strategies } from 'main/webapp/components/RockPaperScissorsStrategies';
-import { FailureModal, LevelsCompleteModal, SuccessModal } from 'main/webapp/components/RockPaperScissorsModals';
+import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
+import {
+  FailureModal,
+  LevelsCompleteModal,
+  SuccessModal,
+} from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsModals';
 
 const SCORE_LIMIT = 5;
 

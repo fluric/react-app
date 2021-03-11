@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Grid, GridColumn, Transition } from 'semantic-ui-react';
 import { isNull } from 'lodash';
 
-import { ButtonContainer, StyledButton } from 'main/webapp/components/RockPaperScissors.style';
+import { ButtonContainer, StyledButton } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors.style';
 import {
   Actions,
   Colors,
@@ -11,7 +11,7 @@ import {
   OPPONENT_DELAY,
   OpponentColors,
 } from 'main/webapp/utilities/RockPaperScissorsUtility';
-import { Strategies } from 'main/webapp/components/RockPaperScissorsStrategies';
+import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
 
 const ButtonWrapper = ({ id, color, onClick }) => (
   <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />
