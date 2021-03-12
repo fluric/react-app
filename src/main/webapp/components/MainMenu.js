@@ -5,7 +5,7 @@ import { Icon, Menu } from 'semantic-ui-react';
 
 import { JOKES, ROCK_PAPER_SCISSORS } from 'main/webapp/Routes';
 
-export const MainMenu = () => (
+const MainMenu = () => (
   <Menu direction='top' inverted>
     <Menu.Item>
       <Link to={ROCK_PAPER_SCISSORS}>
@@ -21,3 +21,5 @@ export const MainMenu = () => (
     </Menu.Item>
   </Menu>
 );
+
+export default MainMenu;
