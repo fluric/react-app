@@ -8,12 +8,12 @@ const instance = axios.create({
   headers: { 'x-rapidapi-key': process.env.RAPID_API_KEY },
 });
 
+console.log(process.env);
+
 const Jokes = () => {
   useEffect(() => {
     instance.get('/categories').then(response => console.log(response));
   }, []);
-
-  console.log(process.env);
 
   return <Button onClick={() => console.log('click')}>Get Joke</Button>;
 };
