@@ -13,6 +13,8 @@ const Jokes = () => {
     instance.get('/categories').then(response => console.log(response));
   }, []);
 
+  console.log(process.env);
+
   return <Button onClick={() => console.log('click')}>Get Joke</Button>;
 };
 
