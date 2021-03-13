@@ -24,7 +24,7 @@ const LevelDisplay = ({ level }) => (
   </Header>
 );
 
-export const RockPaperScissorsBoard = () => {
+const RockPaperScissorsBoard = () => {
   const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [opponentScore, setOpponentScore] = useState(0);
@@ -100,3 +100,5 @@ export const RockPaperScissorsBoard = () => {
     </Grid>
   );
 };
+
+export default RockPaperScissorsBoard;
