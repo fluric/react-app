@@ -1,1 +1,1 @@
-export const jokeType = { SINGLE_PART: 'single', TWO_PART: 'twopart' };
+export const jokeTypes = { SINGLE_PART: 'single', TWO_PART: 'twopart' };

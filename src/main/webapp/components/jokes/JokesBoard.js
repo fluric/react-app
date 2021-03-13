@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { Button, Dropdown, GridRow } from 'semantic-ui-react';
+import { Button, Dropdown, Grid, GridRow } from 'semantic-ui-react';
 import { isEmpty, isNull } from 'lodash';
 
 import { getCategories } from 'main/webapp/store/selectors/JokesSelectors';
@@ -24,20 +24,21 @@ const JokesBoard = () => {
   const onClick = () => loadJoke(selectedCategory).then(({ data }) => setJoke(data));
 
   return (
-    <GridRow>
-      <Button onClick={onClick} primary disabled={isNull(selectedCategory)}>
-        <FormattedMessage id={'app.jokes.button.text'} />
-      </Button>
-      <Dropdown
-        placeholder='Type'
-        fluid
-        selection
-        options={dropdownOptions}
-        onChange={(event, { value }) => setSelectedCategory(value)}
-        value={selectedCategory}
-      />
+    <Grid centered columns={1}>
+      <GridRow>
+        <Dropdown
+          placeholder='Type'
+          selection
+          options={dropdownOptions}
+          onChange={(event, { value }) => setSelectedCategory(value)}
+          value={selectedCategory}
+        />
+        <Button onClick={onClick} primary disabled={isNull(selectedCategory)}>
+          <FormattedMessage id={'app.jokes.button.text'} />
+        </Button>
+      </GridRow>
       {!isEmpty(joke) && <Joke joke={joke} />}
-    </GridRow>
+    </Grid>
   );
 };
 export default JokesBoard;
