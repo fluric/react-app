@@ -6,10 +6,11 @@ import produce from 'immer';
 
 import { initialState } from 'main/webapp/store/initialState';
 import JokesReducer from 'main/webapp/store/reducers/JokesReducer';
+import AppReducer from 'main/webapp/store/reducers/AppReducer';
 
 const withProduce = reducers => reducers.map(reducer => produce((draft, action) => reducer(draft, action)));
 
-const rootReducer = reduceReducers(initialState, ...withProduce([JokesReducer]));
+const rootReducer = reduceReducers(initialState, ...withProduce([AppReducer, JokesReducer]));
 
 const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 
