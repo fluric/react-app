@@ -1,6 +1,6 @@
 import { last, random, nth } from 'lodash';
 
-import { ActionList, Actions } from 'main/webapp/utilities/RockPaperScissorsUtility';
+import { ActionList, Actions } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
 
 const getDummyAction = () => {
   return ActionList[0];

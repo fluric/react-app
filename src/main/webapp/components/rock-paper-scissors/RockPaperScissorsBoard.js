@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Grid, GridRow, Header, Segment } from 'semantic-ui-react';
 import { RockPaperScissors } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors';
-import { OPPONENT_DELAY, Outcomes } from 'main/webapp/utilities/RockPaperScissorsUtility';
+import { OPPONENT_DELAY, Outcomes } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
 import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
 import {
   FailureModal,

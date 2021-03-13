@@ -12,5 +12,6 @@
   "app.rockPaperScissors.levelFailure.confirm": "Ok",
   "app.rockPaperScissors.levelsComplete.header": "Congratulations!",
   "app.rockPaperScissors.levelsComplete.content": "You have completed all levels and are a real master of rock, paper, scissors.",
-  "app.rockPaperScissors.levelsComplete.confirm": "Yeeey :)"
+  "app.rockPaperScissors.levelsComplete.confirm": "Yeeey :)",
+  "app.jokes.button.text": "Get joke"
 }
