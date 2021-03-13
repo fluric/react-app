@@ -10,7 +10,7 @@ import {
   getOutcome,
   OPPONENT_DELAY,
   OpponentColors,
-} from 'main/webapp/utilities/RockPaperScissorsUtility';
+} from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
 import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
 
 const ButtonWrapper = ({ id, color, onClick }) => (
