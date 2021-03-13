@@ -7,7 +7,7 @@ import 'semantic-ui-css/semantic.min.css';
 import MainMenu from 'main/webapp/components/MainMenu';
 import RockPaperScissorsBoard from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsBoard';
 import { JOKES, ROCK_PAPER_SCISSORS } from 'main/webapp/Routes';
-import Jokes from 'main/webapp/components/jokes/Jokes';
+import JokesBoard from 'main/webapp/components/jokes/JokesBoard';
 
 const App = () => (
   <Container>
@@ -17,7 +17,7 @@ const App = () => (
         <RockPaperScissorsBoard />
       </Route>
       <Route path={JOKES}>
-        <Jokes />
+        <JokesBoard />
       </Route>
     </Switch>
   </Container>

@@ -6,8 +6,9 @@ import { isEmpty } from 'lodash';
 
 import { getCategories } from 'main/webapp/store/selectors/JokesSelectors';
 import { loadJoke, loadJokeCategories } from 'main/webapp/api/JokesAPI';
+import Joke from 'main/webapp/components/jokes/Joke';
 
-const Jokes = () => {
+const JokesBoard = () => {
   const categories = useSelector(getCategories);
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -35,8 +36,8 @@ const Jokes = () => {
         onChange={(event, { value }) => setSelectedCategory(value)}
         value={selectedCategory}
       />
-      {isEmpty(joke) ? <>test</> : null}
+      {!isEmpty(joke) && <Joke joke={joke} />}
     </GridRow>
   );
 };
-export default Jokes;
+export default JokesBoard;
