@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Button, Dropdown, GridRow } from 'semantic-ui-react';
-import { isEmpty } from 'lodash';
+import { isEmpty, isNull } from 'lodash';
 
 import { getCategories } from 'main/webapp/store/selectors/JokesSelectors';
 import { loadJoke, loadJokeCategories } from 'main/webapp/api/JokesAPI';
@@ -25,7 +25,7 @@ const JokesBoard = () => {
 
   return (
     <GridRow>
-      <Button onClick={onClick}>
+      <Button onClick={onClick} primary disabled={isNull(selectedCategory)}>
         <FormattedMessage id={'app.jokes.button.text'} />
       </Button>
       <Dropdown
