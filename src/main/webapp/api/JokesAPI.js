@@ -9,3 +9,5 @@ const INSTANCE = axios.create({
 
 export const loadJokeCategories = dispatch =>
   INSTANCE.get('/categories').then(({ data: { categories } }) => dispatch(setCategories(categories)));
+
+export const loadJoke = category => INSTANCE.get(`joke/${category}`);
