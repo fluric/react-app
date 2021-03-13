@@ -1,6 +1,7 @@
 import React from 'react';
 import { jokeTypes } from 'main/webapp/components/jokes/Constants';
-import { Divider, GridRow, Segment } from 'semantic-ui-react';
+import { Divider, GridRow } from 'semantic-ui-react';
+import { StyledSegment } from 'main/webapp/components/jokes/Jokes.style';
 
 const JokesBoard = props => {
   const { type, joke, setup, delivery } = props.joke;
@@ -19,7 +20,7 @@ const JokesBoard = props => {
 
   return (
     <GridRow>
-      <Segment>{singlePartJoke ? <SinglePartJoke /> : <TwoPartJoke />}</Segment>
+      <StyledSegment>{singlePartJoke ? <SinglePartJoke /> : <TwoPartJoke />}</StyledSegment>
     </GridRow>
   );
 };
