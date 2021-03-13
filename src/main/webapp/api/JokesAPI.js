@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setCategories } from 'main/webapp/store/action-creators/JokesActionCreator';
+import { withLoading } from 'main/webapp/store/LoadingUtility';
 
 const INSTANCE = axios.create({
   baseURL: 'https://jokeapi-v2.p.rapidapi.com',
@@ -8,6 +9,6 @@ const INSTANCE = axios.create({
 });
 
 export const loadJokeCategories = dispatch =>
-  INSTANCE.get('/categories').then(({ data: { categories } }) => dispatch(setCategories(categories)));
+  withLoading(INSTANCE.get('/categories').then(({ data: { categories } }) => dispatch(setCategories(categories))));
 
-export const loadJoke = category => INSTANCE.get(`joke/${category}`);
+export const loadJoke = category => withLoading(INSTANCE.get(`joke/${category}`));
