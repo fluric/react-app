@@ -11,7 +11,7 @@ import {
   OPPONENT_DELAY,
   OpponentColors,
 } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
-import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
+import { opponents } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsConfig';
 
 const ButtonWrapper = ({ id, color, onClick }) => (
   <StyledButton size={'large'} id={id} icon={`hand ${id}`} onClick={onClick} color={color} />
@@ -24,7 +24,7 @@ export const RockPaperScissors = ({ onOutcome, level }) => {
   const [showOpponent, setShowOpponent] = useState(true);
   const [actionHistory, setActionHistory] = useState([]);
 
-  const getOpponentAction = Strategies[level];
+  const getOpponentAction = opponents[level].strategy;
 
   useEffect(() => resetComponent(), [level]);
 

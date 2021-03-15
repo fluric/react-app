@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Grid, GridRow, Header, Segment } from 'semantic-ui-react';
+import { Grid, GridRow, Header, Image, Segment } from 'semantic-ui-react';
 import { RockPaperScissors } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors';
 import { OPPONENT_DELAY, Outcomes } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
-import { Strategies } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
 import {
   FailureModal,
   LevelsCompleteModal,
   SuccessModal,
 } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsModals';
+import { opponents } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsConfig';
 
 const SCORE_LIMIT = 5;
 
@@ -33,13 +33,13 @@ const RockPaperScissorsBoard = () => {
   const [showLevelsCompleteModal, setShowLevelsCompleteModal] = useState(false);
 
   useEffect(() => {
-    if (score === SCORE_LIMIT && level < Object.keys(Strategies).length) {
+    if (score === SCORE_LIMIT && level < Object.keys(opponents).length) {
       setTimeout(() => setShowSuccessModal(true), OPPONENT_DELAY);
     }
   }, [score, level]);
 
   useEffect(() => {
-    if (score === SCORE_LIMIT && level === Object.keys(Strategies).length) {
+    if (score === SCORE_LIMIT && level === Object.keys(opponents).length) {
       setTimeout(() => setShowLevelsCompleteModal(true), OPPONENT_DELAY);
     }
   }, [score, level]);
@@ -93,6 +93,12 @@ const RockPaperScissorsBoard = () => {
       </GridRow>
       <GridRow>
         <RockPaperScissors onOutcome={onOutcome} level={level} />
+      </GridRow>
+      <GridRow>
+        <Image src={opponents[level].image} size={'small'} />
+      </GridRow>
+      <GridRow>
+        <strong>{opponents[level].name}</strong>
       </GridRow>
       <SuccessModal open={showSuccessModal} onConfirm={onConfirmSuccess} onDeny={onDenySuccess} />
       <FailureModal open={showFailureModal} onConfirm={onConfirmFailure} />
