@@ -1,4 +1,4 @@
-import { countBy, last, nth, random, sample } from 'lodash';
+import { countBy, last, nth, pull, random, sample } from 'lodash';
 
 import {
   ActionList,
@@ -22,7 +22,7 @@ export const getGreedyAction = actionHistory => {
 };
 
 export const getLastWinAction = actionHistory => {
-  for (const { action, opponentAction } of actionHistory.reverse()) {
+  for (const { action, opponentAction } of actionHistory.slice().reverse()) {
     if (getOutcome(action, opponentAction) === Outcomes.DEFEAT) {
       return opponentAction;
     }
@@ -58,6 +58,20 @@ export const getBalancedAction = actionHistory => {
 
   const minimumActions = Object.keys(countedActions).filter(key => countedActions[key] === minimum);
   return sample(minimumActions);
+};
+
+export const getLongestLossAction = actionHistory => {
+  const actions = [Actions.ROCK, Actions.SCISSORS, Actions.PAPER];
+
+  for (const { action, opponentAction } of actionHistory.slice().reverse()) {
+    if (actions.length === 1) {
+      return actions[0];
+    }
+    if (getOutcome(action, opponentAction) === Outcomes.WIN) {
+      pull(actions, opponentAction);
+    }
+  }
+  return sample(actions);
 };
 
 export const getNoScissorsAction = () => {

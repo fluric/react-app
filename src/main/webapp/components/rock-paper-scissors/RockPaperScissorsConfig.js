@@ -4,6 +4,7 @@ import {
   getEverChangingAction,
   getGreedyAction,
   getLastWinAction,
+  getLongestLossAction,
   getNoScissorsAction,
   getTit42TatAction,
 } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
@@ -14,6 +15,7 @@ import saruman from 'main/webapp/images/cunningSaruman.jpg';
 import denethor from 'main/webapp/images/denethorTheUnstable.png';
 import shokk from 'main/webapp/images/shokkTheDetermined.jpg';
 import smaug from 'main/webapp/images/smaugMasterOfSkies.jpeg';
+import shelob from 'main/webapp/images/carefulShelob.jpg';
 
 export const opponents = {
   1: {
@@ -51,11 +53,11 @@ export const opponents = {
     image: smaug,
     name: 'Smaug Master of the Skies',
   },
-  // 8: {
-  //   strategy: , //TODO: play the move that it lost the longest ago
-  //   image: shelob,
-  //   name: 'Careful Shelob',
-  // },
+  8: {
+    strategy: getLongestLossAction,
+    image: shelob,
+    name: 'Careful Shelob',
+  },
   // 9: {
   //   strategy: ,//TODO: statistical most likely win -> what was played the most -> take winning move
   //   image: sauron,
