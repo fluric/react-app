@@ -7,11 +7,11 @@
     "axios": "^0.21.1",
     "immer": "^9.0.1",
     "lodash": "^4.17.21",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.15.7",
     "react-intl-redux": "^2.2.0",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reduce-reducers": "^1.0.4",
@@ -19,7 +19,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.3"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
-    "eslint": "^7.22.0",
+    "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react-hooks": "^4.2.0",
