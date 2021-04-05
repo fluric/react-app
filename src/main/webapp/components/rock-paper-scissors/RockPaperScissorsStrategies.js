@@ -60,7 +60,7 @@ export const getBalancedAction = actionHistory => {
   return sample(minimumActions);
 };
 
-export const getLongestLossAction = actionHistory => {
+export const getOldestLossAction = actionHistory => {
   const actions = [Actions.ROCK, Actions.SCISSORS, Actions.PAPER];
 
   for (const { action, opponentAction } of actionHistory.slice().reverse()) {
@@ -72,6 +72,15 @@ export const getLongestLossAction = actionHistory => {
     }
   }
   return sample(actions);
+};
+
+export const getMostLikelyWinAction = actionHistory => {
+  const initValues = { [Actions.ROCK]: 0, [Actions.SCISSORS]: 0, [Actions.PAPER]: 0 };
+  const countedActions = { ...initValues, ...countBy(actionHistory, 'action') };
+  const maximum = Math.max(...Object.values(countedActions));
+
+  const maximumActions = Object.keys(countedActions).filter(key => countedActions[key] === maximum);
+  return getWinningAction(sample(maximumActions));
 };
 
 export const getNoScissorsAction = () => {
