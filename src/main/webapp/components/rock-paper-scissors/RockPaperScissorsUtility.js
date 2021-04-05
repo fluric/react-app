@@ -1,5 +1,3 @@
-import { random } from 'lodash';
-
 export const OPPONENT_DELAY = 500; // ms
 
 export const Actions = {
@@ -51,7 +49,13 @@ export const getOutcome = (action, opponentAction) => {
   }
 };
 
-export const getOpponentAction = () => {
-  const index = random(2);
-  return ActionList[index];
+export const getWinningAction = action => {
+  switch (action) {
+    case Actions.SCISSORS:
+      return Actions.ROCK;
+    case Actions.ROCK:
+      return Actions.PAPER;
+    case Actions.PAPER:
+      return Actions.SCISSORS;
+  }
 };

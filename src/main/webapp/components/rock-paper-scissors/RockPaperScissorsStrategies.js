@@ -1,6 +1,11 @@
 import { last, nth, random } from 'lodash';
 
-import { ActionList, Actions } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
+import {
+  ActionList,
+  getOutcome,
+  getWinningAction,
+  Outcomes,
+} from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
 
 export const getDummyAction = () => {
   return ActionList[0];
@@ -12,21 +17,16 @@ export const getGreedyAction = actionHistory => {
   }
   const lastAction = last(actionHistory).action;
 
-  switch (lastAction) {
-    case Actions.SCISSORS:
-      return Actions.ROCK;
-    case Actions.ROCK:
-      return Actions.PAPER;
-    case Actions.PAPER:
-      return Actions.SCISSORS;
-  }
+  return getWinningAction(lastAction);
 };
 
-export const getTit4TatAction = actionHistory => {
-  if (actionHistory.length === 0) {
-    return getRandomAction();
+export const getLastWinAction = actionHistory => {
+  for (const { action, opponentAction } of actionHistory.reverse()) {
+    if (getOutcome(action, opponentAction) === Outcomes.DEFEAT) {
+      return opponentAction;
+    }
   }
-  return last(actionHistory).action;
+  return getRandomAction();
 };
 
 export const getTit42TatAction = actionHistory => {

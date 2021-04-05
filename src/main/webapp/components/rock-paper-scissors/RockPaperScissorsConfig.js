@@ -1,6 +1,7 @@
 import {
   getDummyAction,
   getGreedyAction,
+  getLastWinAction,
   getNoScissorsAction,
   getTit42TatAction,
 } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsStrategies';
@@ -8,11 +9,7 @@ import bargrak from 'main/webapp/images/bargrakIronFist.jpg';
 import gothmog from 'main/webapp/images/gothmogTheDetermined.jpg';
 import golum from 'main/webapp/images/greedyGolum.jpg';
 import saruman from 'main/webapp/images/cunningSaruman.jpg';
-import sauron from 'main/webapp/images/allKnowingSauron.jpg';
-import denethor from 'main/webapp/images/denethorTheUnstable.png';
 import shokk from 'main/webapp/images/shokkTheReluctant.jpg';
-import shelob from 'main/webapp/images/carefulShelob.jpg';
-import smaug from 'main/webapp/images/smaugMasterOfSkies.jpeg';
 
 export const opponents = {
   1: {
@@ -20,27 +17,27 @@ export const opponents = {
     image: bargrak,
     name: 'Bargrak Iron Fist',
   },
-  // 2: {
-  //   strategy:, //TODO: play the one that was won the most recent with
-  //   image: shokk,
-  //   name: 'Shokk the Reluctant'
-  // }
+  2: {
+    strategy: getLastWinAction,
+    image: shokk,
+    name: 'Shokk the Reluctant',
+  },
   // 3: {
   //   strategy:, //TODO: always changing
   //   image: denethor,
   //   name: 'Denethor the Unstable'
   // }
-  2: {
+  3: {
     strategy: getNoScissorsAction,
     image: gothmog,
     name: 'Gothmog the Determined',
   },
-  3: {
+  4: {
     strategy: getGreedyAction,
     image: golum,
     name: 'Greedy Golum',
   },
-  4: {
+  5: {
     strategy: getTit42TatAction,
     image: saruman,
     name: 'Cunning Saruman',
