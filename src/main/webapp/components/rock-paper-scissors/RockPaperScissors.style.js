@@ -1,4 +1,4 @@
-import { Button } from 'semantic-ui-react';
+import { Button, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 export const StyledButton = styled(Button)`
@@ -10,4 +10,8 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const StyledImage = styled(Image)`
+  max-height: 100%;
 `;
