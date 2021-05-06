@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Grid, GridRow, Header, Image, Segment } from 'semantic-ui-react';
+import { Grid, GridRow, Header, Segment } from 'semantic-ui-react';
 import { RockPaperScissors } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors';
 import { OPPONENT_DELAY, Outcomes } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsUtility';
 import {
@@ -9,6 +9,7 @@ import {
   SuccessModal,
 } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsModals';
 import { opponents } from 'main/webapp/components/rock-paper-scissors/RockPaperScissorsConfig';
+import { StyledImage } from 'main/webapp/components/rock-paper-scissors/RockPaperScissors.style';
 
 const SCORE_LIMIT = 5;
 
@@ -95,7 +96,7 @@ const RockPaperScissorsBoard = () => {
         <RockPaperScissors onOutcome={onOutcome} level={level} />
       </GridRow>
       <GridRow>
-        <Image src={opponents[level].image} size={'small'} />
+        <StyledImage src={opponents[level].image} size={'small'} />
       </GridRow>
       <GridRow>
         <strong>{opponents[level].name}</strong>

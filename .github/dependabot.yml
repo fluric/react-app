@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: react-intl
+    versions:
+    - 5.13.3
+    - 5.13.4
+    - 5.14.0
+    - 5.15.3
+    - 5.15.5
+    - 5.15.8
+    - 5.16.0
+    - 5.17.0
+    - 5.17.1
+  - dependency-name: eslint-config-prettier
+    versions:
+    - 8.2.0
+  - dependency-name: eslint
+    versions:
+    - 7.24.0
+  - dependency-name: styled-components
+    versions:
+    - 5.2.2
+  - dependency-name: immer
+    versions:
+    - 8.0.2
+    - 8.0.3
+  - dependency-name: react-dev-utils
+    versions:
+    - 11.0.4
