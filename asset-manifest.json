@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/react-app/static/js/main.d84a5ce7.chunk.js",
-    "main.js.map": "/react-app/static/js/main.d84a5ce7.chunk.js.map",
+    "main.js": "/react-app/static/js/main.bffccbb0.chunk.js",
+    "main.js.map": "/react-app/static/js/main.bffccbb0.chunk.js.map",
     "runtime-main.js": "/react-app/static/js/runtime-main.57adb028.js",
     "runtime-main.js.map": "/react-app/static/js/runtime-main.57adb028.js.map",
     "static/css/2.a784525a.chunk.css": "/react-app/static/css/2.a784525a.chunk.css",
-    "static/js/2.cecf3eb9.chunk.js": "/react-app/static/js/2.cecf3eb9.chunk.js",
-    "static/js/2.cecf3eb9.chunk.js.map": "/react-app/static/js/2.cecf3eb9.chunk.js.map",
+    "static/js/2.09a43574.chunk.js": "/react-app/static/js/2.09a43574.chunk.js",
+    "static/js/2.09a43574.chunk.js.map": "/react-app/static/js/2.09a43574.chunk.js.map",
     "index.html": "/react-app/index.html",
     "static/css/2.a784525a.chunk.css.map": "/react-app/static/css/2.a784525a.chunk.css.map",
-    "static/js/2.cecf3eb9.chunk.js.LICENSE.txt": "/react-app/static/js/2.cecf3eb9.chunk.js.LICENSE.txt",
+    "static/js/2.09a43574.chunk.js.LICENSE.txt": "/react-app/static/js/2.09a43574.chunk.js.LICENSE.txt",
     "static/media/allKnowingSauron.43f96d9f.jpg": "/react-app/static/media/allKnowingSauron.43f96d9f.jpg",
     "static/media/bargrakIronFist.74f78560.jpg": "/react-app/static/media/bargrakIronFist.74f78560.jpg",
     "static/media/semantic.min.css": "/react-app/static/media/outline-icons.ddae9b1b.woff",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.57adb028.js",
     "static/css/2.a784525a.chunk.css",
-    "static/js/2.cecf3eb9.chunk.js",
-    "static/js/main.d84a5ce7.chunk.js"
+    "static/js/2.09a43574.chunk.js",
+    "static/js/main.bffccbb0.chunk.js"
   ]
 }
