@@ -13,5 +13,5 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledImage = styled(Image)`
-  max-height: 100%;
+  ${props => props.isIOS && 'height: 150px !important'};
 `;
